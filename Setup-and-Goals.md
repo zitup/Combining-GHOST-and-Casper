@@ -91,15 +91,15 @@ PBFT 最重要的⼀个⽅⾯是它在异步条件下⼯作，这意味着我们
 
 **备注**（语法与语义）。链与状态转换逻辑一致性之间的关系不应立即显而易见，这需要协议设计者做更多的工作来确保。例如，可以制定一个协议，允许用户花费代币 S 的区块禁止祖先区块在其他交易中使用 S。在这种情况下，如果 Xander 从区块 _B<sub>x</sub>_ 获得代币 _S_ ，并写⼊两个区块 _B<sub>y</sub>_ 和 _B<sub>z</sub>_，其中 _B<sub>y</sub>_ 的数据包括 Xander 向 Yeezus ⽀付 _S_，⽽ _B<sub>z</sub>_ 的数据包括 Xander 向 Zachariah ⽀付 _S_，那么这些⾏为不⼀致的逻辑思想对应于图论性质，即 _B<sub>y</sub>_ 和 _B<sub>z</sub>_ 作为区块发⽣冲突。链和冲突区块的语⾔⾜以满⾜任何此类逻辑，因此我们在论⽂中假设，哪些区块可以成为其他区块的⼦区块的语法已被设计为嵌⼊逻辑⼀致性的语义，这使我们能够忽略逻辑，只从链和冲突区块的⻆度进⾏思考。
 
-<span id="3" style="font-size: 12px">
+<p id="3" style="font-size: 12px">
 [3] G. Bracha and S. Toueg. Asynchronous consensus and broadcast protocols. Journal of the Association for Computing Machinery (JACM), 32(4):824–840, 1985.
-</span>
+</p>
 
-<span id="7" style="font-size: 12px">
+<p id="7" style="font-size: 12px">
 [7] V. Buterin and V. Griffith. Casper the friendly finality gadget. CoRR, abs/1710.09437, 2017.
-</span>
+</p>
 
-<span id="8" style="font-size: 12px">
+<p id="8" style="font-size: 12px">
 [8] M. Castro, B. Liskov, et al. Practical byzantine fault tolerance. In Operating Systems Design
 and Implementation, volume 99, pages 173–186, 1999.
-</span>
+</p>
