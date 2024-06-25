@@ -91,6 +91,24 @@ PBFT 最重要的⼀个⽅⾯是它在异步条件下⼯作，这意味着我们
 
 **备注**（语法与语义）。链与状态转换逻辑一致性之间的关系不应立即显而易见，这需要协议设计者做更多的工作来确保。例如，可以制定一个协议，允许用户花费代币 S 的区块禁止祖先区块在其他交易中使用 S。在这种情况下，如果 Xander 从区块 _B<sub>x</sub>_ 获得代币 _S_ ，并写⼊两个区块 _B<sub>y</sub>_ 和 _B<sub>z</sub>_，其中 _B<sub>y</sub>_ 的数据包括 Xander 向 Yeezus ⽀付 _S_，⽽ _B<sub>z</sub>_ 的数据包括 Xander 向 Zachariah ⽀付 _S_，那么这些⾏为不⼀致的逻辑思想对应于图论性质，即 _B<sub>y</sub>_ 和 _B<sub>z</sub>_ 作为区块发⽣冲突。链和冲突区块的语⾔⾜以满⾜任何此类逻辑，因此我们在论⽂中假设，哪些区块可以成为其他区块的⼦区块的语法已被设计为嵌⼊逻辑⼀致性的语义，这使我们能够忽略逻辑，只从链和冲突区块的⻆度进⾏思考。
 
+### 2.6 时间、纪元和同步
+
+在我们的模型中，我们⽤*插槽（slots）*来测量时间，插槽定义为某个常数秒数（ [[11](#11)] 中暂定为 12 秒）。然后，我们将⼀个*时期（epoch）*定义为某个常数 C（ [[11](#11)] 中暂定为 64 个插槽）的插槽。_插槽 i 的时期 j（epoch j of slot i）_ 为 ep($i$) = $j$ = $\frac{i}{C}$ 。换句话说，属于时期 $j$ 的区块的插槽号为 $j$C + $k$，因为 $k$ 遍历 {0, 1,... , C − 1}。创世区块 B<sub>genesis</sub> 的插槽号为 0，是时期 0 的第⼀个区块。
+
+时期的主要⽬的是将时间划分为多个部分，各个部分之间的边界可以被视为“检查点”（“checkpoints”）。这允许使⽤ Casper FFG 中的概念，我们将在第 3.1 节中看到。
+
+我们不应该假设⽹络保证验证者在任何给定时间看到相同的消息，甚⾄不同的验证者具有相同的时间视图。共识协议的研究通过设置不同的*同步条件（synchrony conditions）*来解决这个问题，例如：
+
+- *同步*系统对于在两个系统之间发送消息所需的时间有明确的上限节点；
+- *异步*系统没有任何保证；回想⼀下，PBFT [[8](#8)]在异步下⼯作。
+- *部分同步（partially synchronous ）*系统可能意味着以下两种情况之⼀，具体取决于上下⽂：（i）存在明确的延迟上限，但事先不知道；（ii）在某个未知时间 T 之后，已知存在明确的上限。⼯作[[10](#10)]在不同故障和同步模型中建⽴了容错界限，重点关注部分同步。
+
+对于我们来说，在研究安全性和可信活性时，我们不做任何同步假设。在研究概率活性（即试图在“现实”条件下量化活性）时，我们将使⽤上述部分同步的概念 (ii)。如果在时间 (T − t) 或之前的所有带有时间戳的消息在时间 T 及之后都在所有验证者的视图中，我们称⽹络在时间 T 是 _t-同步（t-synchronous）_ 的（其中 T 和 t 都以插槽为单位）；例如，如果每个插槽为 12 秒，则 (1/2) 同步意味着所有消息都在最多 6 秒后收到。
+
+_备注。_ 例如，可以接收“来⾃未来”的消息。假设 Alexis 发送了⼀条时间戳为 00:01:30 PT 的消息，Bob 在 1 秒后收到该消息，⽽他的时钟⽐ Alexis 慢 3 秒。Bob 在⾃⼰的时钟上看到这条 00:01:30 PT 消息，时间戳为 00:01:28 PT，因为他总共落后了 2 秒。为了便于分析，我们可以假设所有（诚实的）验证者总是延迟接收消息（即将其添加到他们的视图中），直到他们⾃⼰的时间戳达到消息的时间戳。这使我们能够假设没有消息在⽐它们应该的更早的时间被读取（再次，由诚实的验证者读取）。
+
+### 参考
+
 <p id="3" style="font-size: 12px">
 [3] G. Bracha and S. Toueg. Asynchronous consensus and broadcast protocols. Journal of the Association for Computing Machinery (JACM), 32(4):824–840, 1985.
 </p>
@@ -100,6 +118,13 @@ PBFT 最重要的⼀个⽅⾯是它在异步条件下⼯作，这意味着我们
 </p>
 
 <p id="8" style="font-size: 12px">
-[8] M. Castro, B. Liskov, et al. Practical byzantine fault tolerance. In Operating Systems Design
-and Implementation, volume 99, pages 173–186, 1999.
+[8] M. Castro, B. Liskov, et al. Practical byzantine fault tolerance. In Operating Systems Design and Implementation, volume 99, pages 173–186, 1999.
+</p>
+
+<p id="10" style="font-size: 12px">
+[10] C. Dwork, N. Lynch, and L. Stockmeyer. Consensus in the presence of partial synchrony. Journal of the Association for Computing Machinery (JACM), 35(2):288–323, 1988.
+</p>
+
+<p id="11" style="font-size: 12px">
+Ethereum Developers. Ethereum 2.0 phase 0: The beacon chain. 2019. https://github.com/ethereum/eth2.0-specs/blob/dev/specs/phase1/beacon-chain.md.
 </p>
