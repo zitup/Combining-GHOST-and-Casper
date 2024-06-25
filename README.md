@@ -8,3 +8,25 @@
 
 1. [介绍](Introduction.md)
 2. [设置和目标](Setup-and-Goals.md)
+
+### 参考
+
+<p id="3" style="font-size: 12px">
+[3] G. Bracha and S. Toueg. Asynchronous consensus and broadcast protocols. Journal of the Association for Computing Machinery (JACM), 32(4):824–840, 1985.
+</p>
+
+<p id="7" style="font-size: 12px">
+[7] V. Buterin and V. Griffith. Casper the friendly finality gadget. CoRR, abs/1710.09437, 2017.
+</p>
+
+<p id="8" style="font-size: 12px">
+[8] M. Castro, B. Liskov, et al. Practical byzantine fault tolerance. In Operating Systems Design and Implementation, volume 99, pages 173–186, 1999.
+</p>
+
+<p id="10" style="font-size: 12px">
+[10] C. Dwork, N. Lynch, and L. Stockmeyer. Consensus in the presence of partial synchrony. Journal of the Association for Computing Machinery (JACM), 35(2):288–323, 1988.
+</p>
+
+<p id="11" style="font-size: 12px">
+[11] Ethereum Developers. Ethereum 2.0 phase 0: The beacon chain. 2019. https://github.com/ethereum/eth2.0-specs/blob/dev/specs/phase1/beacon-chain.md.
+</p>
