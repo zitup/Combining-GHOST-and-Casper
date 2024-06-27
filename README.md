@@ -8,6 +8,7 @@
 
 1. [介绍](Introduction.md)
 2. [设置和目标](Setup-and-Goals.md)
+3. [主要成分](Main-Ingredients.md)
 
 ### 参考
 
@@ -29,4 +30,16 @@
 
 <p id="11" style="font-size: 12px">
 [11] Ethereum Developers. Ethereum 2.0 phase 0: The beacon chain. 2019. https://github.com/ethereum/eth2.0-specs/blob/dev/specs/phase1/beacon-chain.md.
+</p>
+
+<p id="17" style="font-size: 12px">
+[17] K. Palmskog, M. Gligoric, L. Pena, B. Moore, and G. Rosu. Verification of casper in the coq proof assistant. Technical report, 2018.
+</p>
+
+<p id="20" style="font-size: 12px">
+[20] Y. Sompolinsky and A. Zohar. Secure high-rate transaction processing in bitcoin. In International Conference on Financial Cryptography and Data Security, pages 507–527. Springer, 2015.
+</p>
+
+<p id="22" style="font-size: 12px">
+[22] V. Zamfir. Casper the friendly ghost: a ”correct-by-construction” blockchain consensus protocol. 2017. https://github.com/vladzamfir/research/blob/master/papers/CasperTFG/CasperTFG.pdf.
 </p>
