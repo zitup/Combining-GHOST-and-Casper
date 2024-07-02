@@ -44,3 +44,7 @@
 <p id="22" style="font-size: 12px">
 [22] V. Zamfir. Casper the friendly ghost: a ”correct-by-construction” blockchain consensus protocol. 2017. https://github.com/vladzamfir/research/blob/master/papers/CasperTFG/CasperTFG.pdf.
 </p>
+
+### 进一步阅读
+
+1. [Epochs and slots all the way down: ways to give Ethereum users faster transaction confirmation times. 2024/06/30](https://vitalik.eth.limo/general/2024/06/30/epochslot.html)
