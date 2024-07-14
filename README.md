@@ -10,6 +10,9 @@
 2. [设置和目标](Setup-and-Goals.md)
 3. [主要成分](Main-Ingredients.md)
 4. [主要协议：Gasper](Main-Protocol-Gasper.md)
+5. [安全性](Safety.md)
+6. [可信的活性](Plausible-Liveness.md)
+7. [概率活性](Probabilistic-Liveness.md)
 
 ### 参考
 
